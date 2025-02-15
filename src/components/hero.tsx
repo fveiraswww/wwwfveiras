@@ -34,10 +34,7 @@ export const Hero = () => {
         }}
       >
         Developer. Creator of experiences and web interfaces. Nerd. Passionate
-        about software. Constantly learning. Currently working as web developer
-        at Üma Health AI, using technologies like JavaScript, TypeScript,
-        Styled-Components, ReactJs, NextJs, Single-Spa, TailwindCss, React
-        Testing Library, NodeJs, Express and more.
+        about software. Constantly learning.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: -30 }}

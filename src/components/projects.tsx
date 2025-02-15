@@ -16,7 +16,7 @@ export const Projects = ({ projects }: { projects: Post[] }) => {
         delay: 0.3,
       }}
     >
-      <h2 className="mb-4 text-sm text-grey-lab">Now</h2>
+      <h2 className="mb-4 text-sm text-grey-lab">Side projects</h2>
       <div className="flex flex-row justify-between gap-4">
         {projects?.map((project) => {
           const projectDescription =
