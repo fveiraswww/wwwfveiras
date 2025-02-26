@@ -1,4 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable  @typescript-eslint/no-unsafe-return */
+/* eslint-disable  @typescript-eslint/no-unsafe-call*/
+
 import bookmarkPlugin from "@notion-render/bookmark-plugin";
 
 import { NotionRenderer } from "@notion-render/client";
@@ -78,20 +83,38 @@ export default async function Page(props: {
   await renderer.use(hljsPlugin({}));
   await renderer.use(bookmarkPlugin(undefined));
 
-  const renderEquation = (block: Block) => {
-    if (block.type === "equation") {
-      return katex.renderToString(block.equation.expression as string, {
-        throwOnError: false,
-      });
-    }
-    return "";
+  const renderInlineContent = (richTextArray: any[]) => {
+    return richTextArray
+      .map((richText) => {
+        if (richText.type === "equation") {
+          return `<span class="inline-equation">${katex.renderToString(
+            richText.equation.expression,
+            { throwOnError: false },
+          )}</span>`;
+        }
+        return richText.plain_text;
+      })
+      .join("");
   };
 
   const renderedBlocks = await Promise.all(
     blocks.map(async (block) => {
-      if ("type" in block && block.type === "equation") {
-        return `<div class="equation">${renderEquation(block as unknown as Block)}</div>`;
+      if ("type" in block) {
+        if (block.type === "equation") {
+          return `<div class="equation">${katex.renderToString(
+            // @ts-expect-error: idk
+            block.equation.expression,
+            { throwOnError: false },
+          )}</div>`;
+        }
+
+        // @ts-expect-error: idk
+        if (block.type === "paragraph" || block.type.includes("heading")) {
+          // @ts-expect-error: idk
+          return `<p>${renderInlineContent(block[block.type].rich_text)}</p>`;
+        }
       }
+
       return await renderer.render(block as unknown as Block);
     }),
   );
