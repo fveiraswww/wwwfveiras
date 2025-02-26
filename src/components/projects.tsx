@@ -17,7 +17,7 @@ export const Projects = ({ projects }: { projects: Post[] }) => {
       }}
     >
       <h2 className="mb-4 text-sm text-grey-lab">Side projects</h2>
-      <div className="flex flex-row justify-between gap-4">
+      <div className="flex flex-col justify-start gap-4 md:flex-row">
         {projects?.map((project) => {
           const projectDescription =
             project?.properties?.Description?.rich_text?.[0]?.text?.content ??

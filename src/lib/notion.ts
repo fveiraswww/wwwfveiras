@@ -123,8 +123,20 @@ export const fetchPageBySlug = React.cache(
   },
 );
 
-export const fetchPageBlocks = React.cache((pageId: string) => {
-  return notion.blocks.children
-    .list({ block_id: pageId })
-    .then((res) => res.results as BlockObjectResponse[]);
-});
+export async function fetchPageBlocks(pageId: string) {
+  let blocks = [];
+  let cursor: string | undefined = undefined;
+
+  do {
+    const response = await notion.blocks.children.list({
+      block_id: pageId,
+      start_cursor: cursor,
+      page_size: 100,
+    });
+
+    blocks.push(...response.results);
+    cursor = response?.next_cursor ?? undefined;
+  } while (cursor);
+
+  return blocks;
+}

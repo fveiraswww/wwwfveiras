@@ -33,18 +33,6 @@ export async function GET(request: Request) {
           fontFamily: "Inter",
         }}
       >
-        <h1
-          style={{
-            display: "flex",
-            color: "hsl(153, 60%, 53%)",
-            textAlign: "start",
-            fontWeight: "700",
-            letterSpacing: "-0.10em",
-            fontSize: "48px",
-          }}
-        >
-          SkaleBox
-        </h1>
         <h2 style={{ display: "flex", lineHeight: "1" }}>
           {title ? title : "Untitled"}
         </h2>
@@ -56,7 +44,7 @@ export async function GET(request: Request) {
             color: "gray",
           }}
         >
-          @{username ? username : "Some user..."}
+          @fveiras_
         </p>
         <div
           style={{

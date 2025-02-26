@@ -3,12 +3,16 @@ import bookmarkPlugin from "@notion-render/bookmark-plugin";
 import { NotionRenderer } from "@notion-render/client";
 
 import hljsPlugin from "@notion-render/hljs-plugin";
+import "katex/dist/katex.min.css";
+import katex from "katex";
+
 import { type Metadata } from "next";
 import { unstable_cache } from "next/cache";
 import Link from "next/link";
 
 import { notFound } from "next/navigation";
 import { fetchPageBlocks, fetchPageBySlug, notion } from "~/lib/notion";
+import { Block } from "@notion-render/client/dist/types";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -52,7 +56,7 @@ const getPost = unstable_cache(
     return { post };
   },
   ["blogpost"],
-  { revalidate: 60, tags: ["blogpost"] },
+  { tags: ["blogpost"] },
 );
 
 export default async function Page(props: {
@@ -73,7 +77,26 @@ export default async function Page(props: {
   await renderer.use(hljsPlugin({}));
   await renderer.use(bookmarkPlugin(undefined));
 
-  const html = await renderer.render(...blocks);
+  const renderEquation = (block: Block) => {
+    if (block.type === "equation") {
+      return katex.renderToString(block.equation.expression, {
+        throwOnError: false,
+      });
+    }
+    return "";
+  };
+
+  const renderedBlocks = await Promise.all(
+    blocks.map(async (block) => {
+      if ("type" in block && block.type === "equation") {
+        return `<div class="equation">${renderEquation(block as unknown as Block)}</div>`;
+      }
+      return await renderer.render(block as unknown as Block);
+    }),
+  );
+
+  const html = renderedBlocks.join("");
+
   const date = new Date(post.properties.Updated.last_edited_time);
   const formattedDate = date.toDateString();
 
@@ -87,7 +110,7 @@ export default async function Page(props: {
       <h1 className="mt-8 text-3xl font-semibold">
         {post?.properties?.Name?.title[0]?.text?.content ?? ""}
       </h1>
-      <p>
+      <p className="my-4">
         {formattedDate} · {post?.properties?.Tags.multi_select[0]?.name}
       </p>
       <div
