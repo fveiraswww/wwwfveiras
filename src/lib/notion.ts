@@ -40,10 +40,6 @@ export interface Post {
 }
 
 import React from "react";
-import {
-  type BlockObjectResponse,
-  type PageObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
 
 export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -124,7 +120,7 @@ export const fetchPageBySlug = React.cache(
 );
 
 export async function fetchPageBlocks(pageId: string) {
-  let blocks = [];
+  const blocks = [];
   let cursor: string | undefined = undefined;
 
   do {

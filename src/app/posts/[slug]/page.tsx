@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import bookmarkPlugin from "@notion-render/bookmark-plugin";
 
 import { NotionRenderer } from "@notion-render/client";
@@ -12,7 +13,7 @@ import Link from "next/link";
 
 import { notFound } from "next/navigation";
 import { fetchPageBlocks, fetchPageBySlug, notion } from "~/lib/notion";
-import { Block } from "@notion-render/client/dist/types";
+import type { Block } from "@notion-render/client/dist/types";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -79,7 +80,7 @@ export default async function Page(props: {
 
   const renderEquation = (block: Block) => {
     if (block.type === "equation") {
-      return katex.renderToString(block.equation.expression, {
+      return katex.renderToString(block.equation.expression as string, {
         throwOnError: false,
       });
     }

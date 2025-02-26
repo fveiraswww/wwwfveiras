@@ -9,7 +9,6 @@ export async function GET(request: Request) {
   const searchParams = url.searchParams;
 
   const title = searchParams.get("title");
-  const username = searchParams.get("username");
 
   return new ImageResponse(
     (
@@ -34,7 +33,7 @@ export async function GET(request: Request) {
         }}
       >
         <h2 style={{ display: "flex", lineHeight: "1" }}>
-          {title ? title : "Untitled"}
+          {title ?? "Untitled"}
         </h2>
         <p
           style={{
