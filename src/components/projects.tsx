@@ -16,7 +16,7 @@ export const Projects = ({ projects }: { projects: Post[] }) => {
         delay: 0.3,
       }}
     >
-      <h2 className="mb-4 text-sm text-grey-lab">Side projects</h2>
+      <h2 className="mb-4 text-sm dark:text-grey-lab">Side projects</h2>
       <div className="flex flex-col justify-start gap-4 md:flex-row">
         {projects?.map((project) => {
           const projectDescription =
@@ -28,7 +28,7 @@ export const Projects = ({ projects }: { projects: Post[] }) => {
               href={project?.properties?.URL?.url ?? ""}
               target="_blank"
               key={project.id}
-              className="flex cursor-pointer flex-row items-center gap-4 rounded-lg border border-grey-border bg-grey-subtle p-4 transition-all hover:bg-grey-hover/60"
+              className="flex cursor-pointer flex-row items-center gap-4 rounded-lg border bg-gray-50 p-4 transition-all hover:bg-gray-100 dark:border-grey-border dark:bg-grey-subtle hover:dark:bg-grey-hover/60"
             >
               <div>
                 <h2>

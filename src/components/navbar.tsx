@@ -4,7 +4,7 @@ import React from "react";
 
 export const Navbar = () => {
   return (
-    <nav className="sticky left-0 top-0 z-50 flex w-full flex-row items-center justify-between border-b border-grey-border bg-grey-subtle px-4 py-2">
+    <nav className="sticky left-0 top-0 z-50 flex w-full flex-row items-center justify-between border border-b bg-gray-100 px-4 py-2 dark:border-grey-border dark:bg-grey-subtle">
       <Link
         href="/"
         className="flex cursor-pointer flex-row items-center gap-2"
@@ -16,7 +16,9 @@ export const Navbar = () => {
           className="max-h-8 min-w-8 rounded-full border border-grey-border"
           height={32}
         />
-        <p className="hidden text-sm lg:block">Francisco Veiras</p>
+        <p className="hidden text-sm text-black dark:text-white lg:block">
+          Francisco Veiras
+        </p>
       </Link>
       <div className="flex flex-row items-center gap-4">
         <Link

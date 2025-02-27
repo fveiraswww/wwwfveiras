@@ -16,7 +16,7 @@ export const Posts = ({ posts }: { posts: Post[] }) => {
         delay: 0.4,
       }}
     >
-      <h2 className="mb-4 text-sm text-grey-lab">Posts</h2>
+      <h2 className="mb-4 text-sm dark:text-grey-lab">Posts</h2>
       <div className="flex flex-col justify-between gap-4 md:flex-row">
         {posts?.map((post) => {
           const postDescription =
@@ -45,7 +45,7 @@ export const Posts = ({ posts }: { posts: Post[] }) => {
         className="mt-4 flex flex-row items-end gap-1 underline decoration-grey-lab/60 transition-all hover:decoration-grey-lab"
       >
         View all posts
-        <MoveUpRight className="text-grey-lab/80" width={18} height={18} />
+        <MoveUpRight className="dark:text-grey-lab/80" width={18} height={18} />
       </Link>
     </motion.div>
   );

@@ -80,7 +80,8 @@ const PostComponent = ({
             className={cn(
               "flex w-full flex-row items-center justify-between rounded-lg p-4 transition-all",
               {
-                "bg-grey-hover": title === PostHover,
+                "dark:bg-grey-hover": title === PostHover,
+                "bg-gray-100": title === PostHover,
               },
             )}
           >

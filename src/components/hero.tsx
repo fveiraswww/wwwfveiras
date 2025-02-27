@@ -3,8 +3,10 @@ import Image from "next/image";
 import React from "react";
 import { Divider } from "./divider";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 export const Hero = () => {
+  const { theme } = useTheme();
   return (
     <div className="flex flex-col gap-8">
       <Image
@@ -45,7 +47,7 @@ export const Hero = () => {
           delay: 0.1,
         }}
       >
-        <Divider color="#B7B7B7" />
+        <Divider color={theme === "dark" ? "#B7B7B7" : "#464646"} />
       </motion.div>
     </div>
   );

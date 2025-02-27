@@ -124,8 +124,14 @@
   }
 }
 
-p, ul, li {
+p, ul, li .dark {
   color: rgb(180 180 180/0.9);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+p, ul, li {
+  color: rgb(70, 70, 70);
   line-height: 1.75;
   font-size: 1rem;
 }
