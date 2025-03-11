@@ -124,11 +124,12 @@
   }
 }
 
-.dark p, ul, li  {
-  color: rgb(180 180 180/0.9);
+.dark  p, ul, li, ul  {
+  color: rgb(180 180 180) !important;
   line-height: 1.75;
   font-size: 1rem;
 }
+
 
 p, ul, li {
   color: rgb(70, 70, 70);
@@ -207,7 +208,7 @@ summary {
 }
 
 .language-javascript {
-  @apply text-foreground dark:text-primary-foreground;
+  @apply text-foreground;
 }
 .hljs-name {
   @apply text-teal-200 dark:text-teal-200;
