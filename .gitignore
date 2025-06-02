@@ -1,0 +1,11 @@
+node_modules
+.next
+
+.now
+.env
+.DS_Store
+.vercel
+
+
+# BaseHub
+.basehub

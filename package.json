@@ -1,0 +1,40 @@
+{
+  "name": "fveiras",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "basehub dev & next",
+    "build": "basehub build && next build",
+    "start": "next start",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@radix-ui/react-icons": "^1.3.0",
+    "@vercel/analytics": "^1.1.1",
+    "@vercel/toolbar": "^0.1.11",
+    "basehub": "8.2.0",
+    "clsx": "^2.0.0",
+    "geist": "^1.2.0",
+    "github-calendar": "^2.3.4",
+    "next": "15.3.1-canary.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "sharp": "0.34.1"
+  },
+  "devDependencies": {
+    "@radix-ui/colors": "^3.0.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.10.4",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "10.4.16",
+    "prettier": "^3.1.1",
+    "tailwindcss": "3.4.0",
+    "typescript": "^5.3.3"
+  },
+  "license": "ISC",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
