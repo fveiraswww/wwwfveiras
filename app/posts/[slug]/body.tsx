@@ -1,4 +1,5 @@
 import { InfoCircledIcon } from '@radix-ui/react-icons'
+import { CodeBlock } from 'basehub/react-code-block'
 import { RichText, RichTextProps } from 'basehub/react-rich-text'
 import { clsx } from 'clsx'
 import Link from 'next/link'
@@ -24,6 +25,9 @@ export const PostBody = ({
               />
             )
           },
+          pre: ({ code, language }) => (
+            <CodeBlock theme="slack-dark" snippets={[{ code, language }]} />
+          ),
           hr: () => (
             <p className="my-10 select-none text-center text-dark-gray10 tracking-widest">
               ﹡﹡﹡
