@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import { PageWrapper } from './_components/page-wrapper'
 import { DynamicIcon } from './_components/dynamic-icon'
 import { LinkWithAnalytics } from './_components/link-with-analytics'
+import Image from 'next/image'
 
 export const dynamic = 'force-static'
 
@@ -97,7 +98,7 @@ const HomePage = async () => {
             {/* hero */}
             <section className="flex max-w-[40rem] w-full flex-col items-start gap-8">
               <div>
-                <img
+                <Image
                   src={index.avatar.url}
                   alt={index.avatar.alt ?? ''}
                   width={index.avatar.width}
