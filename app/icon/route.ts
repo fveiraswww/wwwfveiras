@@ -1,5 +1,4 @@
 import { basehub } from 'basehub'
-import { notFound } from 'next/navigation'
 import sharp from 'sharp'
 
 export const revalidate = 60
@@ -20,8 +19,6 @@ export const GET = async () => {
   })
   const iconURL = data.index.avatar.url
 
-  if (!iconURL) notFound()
-
   const res = await fetch(iconURL)
   // make it round with sharp
   const buffer = await sharp(await res.arrayBuffer())
@@ -37,7 +34,7 @@ export const GET = async () => {
     .png()
     .toBuffer()
 
-  return new Response(buffer, {
+  return new Response(buffer as BodyInit, {
     status: 200,
     headers: {
       'Content-Type': 'image/png',

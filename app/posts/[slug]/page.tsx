@@ -141,6 +141,8 @@ const PostPage = async ({
 
         const post = data.index.postsSection.posts.items[0]
         if (!post) notFound()
+        console.log(post.body.json.content)
+
         return (
           <PageWrapper>
             <div className="max-w-2xl w-full">
